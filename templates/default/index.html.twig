@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+    <h2>Records: {{ pagination.getTotalItemCount }}</h2>
+    {# Старые добрые таблицы =)#}
+    <table border="1">
+        <tr>
+            {# sorting of properties based on query components #}
+            <th>{{ knp_pagination_sortable(pagination, 'Id', 'i.id') }}</th>
+            <th>{{ knp_pagination_sortable(pagination, 'Code', 'i.code') }}</th>
+            <th>Name</th>
+            <th>Weight</th>
+            <th>Usage</th>
+            <th>quantity_moskva</th>
+            <th>quantity_sankt_peterburg</th>
+            <th>quantity_samara</th>
+            <th>quantity_saratov</th>
+            <th>quantity_kazani</th>
+            <th>quantity_novosibirsk</th>
+            <th>quantity_chelyabinsk</th>
+            <th>quantity_delovyye_linii_chelyabinsk</th>
+            <th>price_moskva</th>
+            <th>price_sankt_peterburg</th>
+            <th>price_samara</th>
+            <th>price_saratov</th>
+            <th>price_kazani</th>
+            <th>price_novosibirsk</th>
+            <th>price_chelyabinsk</th>
+            <th>price_delovyye_linii_chelyabinsk</th>
+        </tr>
+
+        {# table body #}
+        {% for item in pagination %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.code }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.weight }}</td>
+                <td>{{ item.usage }}</td>
+                <td>{{ item.quantityMoskva }}</td>
+                <td>{{ item.quantitySanktPeterburg }}</td>
+                <td>{{ item.quantitySamara }}</td>
+                <td>{{ item.quantitySaratov }}</td>
+                <td>{{ item.quantityKazani }}</td>
+                <td>{{ item.quantityNovosibirsk }}</td>
+                <td>{{ item.quantityChelyabinsk }}</td>
+                <td>{{ item.quantityDelovyyeLiniiChelyabinsk }}</td>
+                <td>{{ item.priceMoskva }}</td>
+                <td>{{ item.priceSanktPeterburg }}</td>
+                <td>{{ item.priceSamara }}</td>
+                <td>{{ item.priceSaratov }}</td>
+                <td>{{ item.priceKazani }}</td>
+                <td>{{ item.priceNovosibirsk }}</td>
+                <td>{{ item.priceChelyabinsk }}</td>
+                <td>{{ item.priceDelovyyeLiniiChelyabinsk }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {# display navigation #}
+    <h2>
+        {{ knp_pagination_render(pagination) }}
+    </h2>
+{% endblock %}
